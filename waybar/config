@@ -1,0 +1,88 @@
+[
+    {
+        "layer": "top",
+        "position": "top",
+        "height": 30,
+        "spacing": 4,
+        "margin-top": 6,
+        "margin-left": 6,
+        "margin-right": 6,
+        "modules-left": [
+            "sway/workspaces"
+        ],
+        "modules-center": [
+            "sway/window"
+        ],
+        "modules-right": [
+            "sway/mode",
+            "sway/scratchpad",
+            "clock"
+        ],
+        "sway/workspaces": {
+            "disable-scroll": true,
+            "all-outputs": true,
+            "format": "{name}. {icon}",
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "3": "",
+                "4": "",
+                "5": "",
+                "default": ""
+            }
+        },
+        "sway/scratchpad": {
+            "format": "{icon} {count}",
+            "show-empty": false,
+            "format-icons": [
+                "",
+                ""
+            ],
+            "tooltip": true,
+            "tooltip-format": "{app}: {title}"
+        },
+        "clock": {
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            "format": " {:%Y-%m-%d %H:%M}"
+        }
+    },
+    {
+        "layer": "top",
+        "position": "bottom",
+        "height": 30,
+        "spacing": 4,
+        "margin-bottom": 6,
+        "margin-left": 6,
+        "margin-right": 6,
+        "modules-left": [
+            "cpu",
+            "custom/separator",
+            "memory"
+        ],
+        "modules-center": [],
+        "modules-right": [
+            "tray",
+            "network"
+        ],
+        "cpu": {
+            "format": " {usage}%"
+        },
+        "memory": {
+            "format": " {}%"
+        },
+        "tray": {
+            "spacing": 10
+        },
+        "network": {
+            "interval": 1,
+            "format-linked": " {bandwidthDownBytes}  {bandwidthUpBytes} |  {ifname} (No IP)",
+            "format-wifi": " {bandwidthDownBytes}  {bandwidthUpBytes} |  {essid} ({signalStrength}%)",
+            "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes} |  {ipaddr}/{cidr}",
+            "format-disconnected": "⚠ Disconnected"
+        },
+        "custom/separator": {
+            "format": "|",
+            "tooltip": false
+        }
+    }
+]
