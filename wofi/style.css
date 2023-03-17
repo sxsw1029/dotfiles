@@ -1,0 +1,31 @@
+window {
+    font-family: "Source Code Pro Medium", sans-serif;
+    font-size: 15px;
+    background: rgba(27, 29, 30, .6);
+}
+
+#input {
+    margin: 8px;
+    background-color: rgba(248, 248, 242, .8);
+}
+
+#inner-box {
+    padding: 0 8px;
+}
+
+#outer-box {
+    margin: 4px 0;
+}
+
+#scroll {
+    margin: 4px 0;
+}
+
+#text {
+    margin: 4px;
+    color: #f8f8f2;
+}
+
+#entry:selected {
+    background: rgba(80, 83, 84, .8);
+}
