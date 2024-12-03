@@ -1,36 +1,52 @@
+
 [
     {
+        // Waybar Configuration
+
         "layer": "top",
         "position": "top",
-        "height": 30,
         "spacing": 4,
-        "margin-top": 6,
-        "margin-left": 6,
-        "margin-right": 6,
+
+	    // Modules
+
         "modules-left": [
-            "sway/workspaces"
+            "sway/workspaces",
+            "sway/scratchpad",
+            "sway/mode"
         ],
+
         "modules-center": [
             "sway/window"
         ],
+
         "modules-right": [
-            "sway/mode",
-            "sway/scratchpad",
+	        "tray",
+            "wlr/taskbar",
+            "idle_inhibitor",
+            "cpu",
+            "memory",
+            // "network",
+            "pulseaudio",
             "clock"
         ],
+
+	    // Modules Configuration
+
         "sway/workspaces": {
-            "disable-scroll": true,
-            "all-outputs": true,
-            "format": "{name}. {icon}",
+            "format": "{icon}",
             "format-icons": {
-                "1": "",
-                "2": "",
-                "3": "",
-                "4": "",
-                "5": "",
-                "default": ""
+                "default": ""
+            },
+            "persistent-workspaces": {
+                "1": [],
+                "2": [],
+                "3": [],
+                "4": [],
+                "5": [],
+                "6": []
             }
         },
+
         "sway/scratchpad": {
             "format": "{icon} {count}",
             "show-empty": false,
@@ -41,48 +57,79 @@
             "tooltip": true,
             "tooltip-format": "{app}: {title}"
         },
-        "clock": {
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-            "format": " {:%Y-%m-%d %H:%M}"
-        }
-    },
-    {
-        "layer": "top",
-        "position": "bottom",
-        "height": 30,
-        "spacing": 4,
-        "margin-bottom": 6,
-        "margin-left": 6,
-        "margin-right": 6,
-        "modules-left": [
-            "cpu",
-            "custom/separator",
-            "memory"
-        ],
-        "modules-center": [],
-        "modules-right": [
-            "tray",
-            "network"
-        ],
+
+        "sway/window": {
+            "format": "{title}",
+            "max-length": 50
+        },
+
+        "wlr/taskbar": {
+            "format": "{icon}",
+            "icon-size": 16,
+            "icon-theme": "",
+            "tooltip-format": "{title}",
+            "on-click": "activate",
+            "on-click-middle": "close",
+            "ignore-list": [
+                "foot"
+            ]
+        },
+
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "",
+                "deactivated": ""
+            }
+        },
+
         "cpu": {
-            "format": " {usage}%"
+            "interval": 5,
+            "format": "{usage}% "
         },
+
         "memory": {
-            "format": " {}%"
+            "interval": 10,
+            "format": "{}% "
         },
-        "tray": {
-            "spacing": 10
+
+        // "network": {
+        //     "interface": "enp*",
+        //     "format-wifi": "{signalStrength}% ",
+        //     "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+        //     "format-disconnected": "", //An empty format will hide the module.
+            
+        //     "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        //     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        //     "tooltip-format-ethernet": "{ifname} ",
+        //     "tooltip-format-disconnected": "Disconnected",
+        //     "max-length": 50,
+        //     "interval": 30
+        // },
+
+        "pulseaudio": {
+            "format": "{volume}% {icon}",
+            "format-bluetooth": "{volume}% {icon}",
+            "format-muted": "",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "phone-muted": "",
+                "portable": "",
+                "car": "",
+                "default": ["", ""]
+            },
+            "scroll-step": 1
+            // "on-click": "pavucontrol",
         },
-        "network": {
+
+        "clock": {
             "interval": 1,
-            "format-linked": " {bandwidthDownBytes}  {bandwidthUpBytes} |  {ifname} (No IP)",
-            "format-wifi": " {bandwidthDownBytes}  {bandwidthUpBytes} |  {essid} ({signalStrength}%)",
-            "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes} |  {ipaddr}/{cidr}",
-            "format-disconnected": "⚠ Disconnected"
-        },
-        "custom/separator": {
-            "format": "|",
-            "tooltip": false
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            "format": "{:%H:%M:%S}",
+            "format-alt": "{:%Y/%m/%d %H:%M:%S}"
         }
     }
 ]

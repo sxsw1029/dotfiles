@@ -1,6 +1,6 @@
 # Dotfiles
 
-My dotfiles and Sway desktop configs.
+My dotfiles and desktop configurations.
 
 ![screenshot](/screenshot.png)
 

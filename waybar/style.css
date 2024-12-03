@@ -1,42 +1,22 @@
-@define-color black1     #1b1d1e;
-@define-color red1       #f92672;
-@define-color green1     #82b414;
-@define-color yellow1    #fd971f;
-@define-color blue1      #56c2d6;
-@define-color magenta1   #8c54fe;
-@define-color cyan1      #465457;
-@define-color white1     #ccccc6;
-
-@define-color black2     #505354;
-@define-color red2       #ff5995;
-@define-color green2     #b6e354;
-@define-color yellow2    #feed6c;
-@define-color blue2      #8cedff;
-@define-color magenta2   #9e6ffe;
-@define-color cyan2      #899ca1;
-@define-color white2     #f8f8f2;
+@import url("./colors.css");
 
 * {
-    font-family: "Source Code Pro Medium", "Font Awesome 6 Free", sans-serif;
-    font-size: 14px;
+    font-family:
+        "Source Code Pro Medium",
+        "Font Awesome 6 Free",
+        "Font Awesome 6 Brands",
+        sans-serif;
+
+    font-size: 16px;
 }
 
 window#waybar {
-    background-color: rgba(27, 29, 30, .8);
-    color: @white2;
-    border-radius: 6px;
+    background: @background-darker;
+    color: @foreground;
 }
 
 window#waybar.hidden {
     opacity: 0.2;
-}
-
-.modules-left:first-child {
-    margin-left: 8px;
-}
-
-.modules-right:last-child {
-    margin-right: 8px;
 }
 
 button {
@@ -47,11 +27,25 @@ button {
     border-radius: 0;
 }
 
+#workspaces,
+#clock {
+    padding: 0 10px;
+    background: @selection;
+}
+
+#clock {
+    margin-left: 8px;
+    border-top-left-radius: 12px;
+}
+
+#workspaces {
+    margin-right: 8px;
+    border-top-right-radius: 12px;
+}
+
 #workspaces button {
-    padding: 0 8px;
-    margin: 0 4px;
-    background: transparent;
-    color: @white2;
+    padding: 0 10px;
+    color: @foreground;
 }
 
 #workspaces button:hover {
@@ -59,41 +53,12 @@ button {
 }
 
 #workspaces button.focused {
-    color: @blue2;
+    font-weight: bold;
+    color: @foreground;
 }
 
 #workspaces button.urgent {
-    background-color: @red2;
-}
-
-#mode {
-    background-color: @red2;
-    border-bottom: 3px solid @white2;
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-    padding: 0 10px;
-    color: @white2;
-}
-
-#window,
-#workspaces {
-    margin: 0 4px;
+    color: @red;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -106,14 +71,68 @@ button {
     margin-right: 0;
 }
 
-label:focus {
-    background-color: @black1;
+#window {
+    margin: 6px;
+    padding: 0 20px;
+
+    background: @selection;
+    border-radius: 9999px;
+}
+
+/* Hide "sway/window" when there is no window in focus */
+window#waybar.empty #window {
+    background: none;
+}
+
+#mode {
+    background-color: @red;
+    border-bottom: 3px solid @foreground;
+}
+
+#cpu {
+    background: rgb(255, 85, 85);
+    background: linear-gradient(
+        to right,
+        rgba(255, 85, 85, 1) 0%,
+        rgba(255, 184, 108, 1) 100%
+    );
+}
+
+#memory {
+    background: rgb(255, 184, 108);
+    background: linear-gradient(
+        to right,
+        rgba(255, 184, 108, 1) 0%,
+        rgba(241, 250, 140, 1) 100%
+    );
+}
+
+#pulseaudio {
+    background: rgb(241, 250, 140);
+    background: linear-gradient(
+        to right,
+        rgba(241, 250, 140, 1) 0%,
+        rgba(139, 233, 253, 1) 100%
+    );
+}
+
+#cpu,
+#memory,
+#pulseaudio {
+    margin: 6px 2px;
+    padding: 6px 14px;
+    color: @background;
+    border-radius: 9999px;
+}
+
+#tray,
+#idle_inhibitor,
+#mode,
+#scratchpad {
+    padding: 0 10px;
+    color: @foreground;
 }
 
 #scratchpad.empty {
 	background-color: transparent;
-}
-
-#custom-separator {
-    color: @black2;
 }
